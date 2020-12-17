@@ -1,0 +1,20 @@
+{
+  "name": "mesto-express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "Alexandr Smagin",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^14.2.1",
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
