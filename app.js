@@ -8,8 +8,8 @@ const cardsRouter = require('./routes/cards');
 
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
-app.use('', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('*', (req, res) => res.status(404).send({ message: 'Запрашиваемый ресурс не найден' }));
 
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`);
