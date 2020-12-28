@@ -1,9 +1,11 @@
 const path = require('path');
 const getDataFromFile = require('../helpers/files.js');
 const dataPathUsers = path.join(__dirname, '..', 'data', 'users.json');
+const User = require('../models/user.js');
+
 
 const getUsers = (req, res) => {
-    return getDataFromFile(dataPathUsers)
+    User.find({})
         .then(users => res.status(200).send(users))
         .catch(err => res.status(500).send(err))
 }
