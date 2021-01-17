@@ -9,19 +9,20 @@ const {
 const getUsers = (req, res) => {
     User.find({})
         .then(users => res.status(OK).send(users))
-        .catch(err => res.status(INTERNAL_SERVER_ERROR).send(err))
+        .catch(err => res.status(INTERNAL_SERVER_ERROR).send(err));
 }
-
+//вывод пользователя по id
 const getProfile = (req, res) => {
-    const { id } = req.params;
-    User.findOne({ id })
+    const id = req.params._id;
+    console.log(id);
+    User.findById(id)
         .then((user) => {
             if (!user) {
-                return res.status(NOT_FOUND).send({ message: 'Нет пользователя с таким id' })
+                res.status(NOT_FOUND).send({ message: 'Пользователь не найден' });
+            } else {
+                res.send(user);
             }
-            return res.status(OK).send(user);
         })
-        .catch(err => res.status(INTERNAL_SERVER_ERROR).send(err))
 }
 
 const createUser = (req, res) => {
@@ -29,8 +30,8 @@ const createUser = (req, res) => {
         .then(count => {
             return User.create({ id: count, ...req.body })
                 .then(user => res.status(OK).send(user))
-                .catch(err => res.status(BAD_REQUEST).send(err))
+                .catch(err => res.status(BAD_REQUEST).send({ message: err.message }));
         })
 }
 
-module.exports = { getUsers, getProfile, createUser }
+module.exports = { getUsers, getProfile, createUser };

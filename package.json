@@ -1,7 +1,7 @@
 {
   "name": "mesto-express",
   "version": "1.0.0",
-  "description": "",
+  "description": "работа посвящена отработке навыков по созданию баз данных и отправке запросов",
   "main": "index.js",
   "scripts": {
     "start": "node app.js",

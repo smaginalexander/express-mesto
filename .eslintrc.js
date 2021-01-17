@@ -16,7 +16,7 @@ export default {
         "sourceType": "module"
     },
     "plugins": [
-        "react"
+        ""
     ],
     "rules": {
         "no-underscore-dangle": ["error", { "allow": ["foo_", "_bar"] }]

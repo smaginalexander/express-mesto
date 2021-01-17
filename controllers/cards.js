@@ -16,12 +16,12 @@ const createCard = (req, res) => {
         .then(count => {
             return Card.create({ id: count, ...req.body })
                 .then(card => res.status(OK).send(card))
-                .catch(err => res.status(BAD_REQUEST).send(err))
+                .catch((err) => res.status(BAD_REQUEST).send({ message: err.message }))
         })
 };
 
 const deleteCard = (req, res) => {
-
+    console.log(req.params.cardId)
     Card.findByIdAndRemove(req.params.cardId)
         .then((card) => {
             if (!card) {
